@@ -1,5 +1,5 @@
-import {OrderStatus} from "./Order-model";
+import { OrderStatus } from './Order-model'
 
-export type Filters = {
-    status: OrderStatus | OrderStatus[];
+export interface Filters {
+  status: OrderStatus | OrderStatus[]
 }
