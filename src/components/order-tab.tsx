@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { OrderModel, OrderStatus } from '../model/Order-model'
 import { Order } from './order'
-import { ApiCaller } from '../api/ApiCaller'
+import { ApiCaller } from '../utils/ApiCaller'
 
 interface state {
   orders: OrderModel[]

@@ -1,5 +1,7 @@
-import {OrderModel} from "../model/Order-model";
-import styled from "styled-components";
+import { OrderModel } from '../model/Order-model'
+import styled from 'styled-components'
+import React from 'react'
+import { Pair } from '../model/Pair'
 
 const StyledOrder = styled.div`
     display: flex;
@@ -25,29 +27,27 @@ const StyledPair = styled.div`
     margin-right: auto;
     `
 
-export function Order({order}: { order: OrderModel }) {
-
-    return <StyledOrder>
-        <Pair pair={order.pair}></Pair>
-        {order.price.value && <Price>{order.price.value}</Price>}
+export function Order ({ order }: { order: OrderModel }): JSX.Element {
+  return <StyledOrder>
+        <PairElement pair={order.pair}></PairElement>
+        {order.price.value !== undefined && <Price>{order.price.value}</Price>}
     </StyledOrder>
 }
 
-
-function Pair({pair}: { pair: Pair }) {
-    return <StyledPair>
+function PairElement ({ pair }: { pair: Pair }): JSX.Element {
+  return <StyledPair>
         <span style={
             {
-                color: 'green',
-                fontWeight: 'bold',
-                alignSelf: "flex-start"
+              color: 'green',
+              fontWeight: 'bold',
+              alignSelf: 'flex-start'
             }
         }> {pair.token1}</span>
         <span style={
             {
-                color: 'red',
-                fontSize: 'small',
-                alignSelf: "flex-end"
+              color: 'red',
+              fontSize: 'small',
+              alignSelf: 'flex-end'
             }
         }> {pair.token2}</span>
     </StyledPair>
