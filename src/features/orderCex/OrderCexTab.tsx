@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Order } from '../../components/order'
+import { Order } from '../../pages/dashboard/order'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActiveOrderCex, selectOrdersCex } from './orderCexSlice'
 

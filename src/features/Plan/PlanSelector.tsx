@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allPlans, fetchPlans, planSelected, selectPlan } from './PlanSlice'
 import styled from 'styled-components'
+import { PlanModel } from '../../model/PlanModel'
 
 const StyledPlanItem = styled.li<{ isSelected: boolean }>`
     color: #f00;
@@ -17,9 +18,9 @@ export function PlanSelector (): JSX.Element {
     dispatch(fetchPlans() as any)
   }, [])
 
-  const plans = useSelector(allPlans)
-  const actualPlan = useSelector(planSelected)
-  console.log(plans)
+  const plans: PlanModel[] = useSelector(allPlans)
+  const actualPlan: PlanModel | null = useSelector(planSelected)
+
   return (<div>
             <h1>Select the plan</h1>
             <button

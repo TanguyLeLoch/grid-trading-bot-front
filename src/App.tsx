@@ -1,22 +1,25 @@
 import './App.css'
 import React from 'react'
-import { OrderDbTab } from './features/orderDb/OrderDbTab'
-import { OrderCexTab } from './features/orderCex/OrderCexTab'
 import styled from 'styled-components'
-import { PlanSelector } from './features/Plan/PlanSelector'
+import { Route, Routes } from 'react-router-dom'
+import { Home } from './pages/Home'
+import { DashBoard } from './pages/dashboard/DashBoard'
+import { Navbar } from './components/Navbar'
 
 const StyledDiv = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 `
 
 function App (): JSX.Element {
   return (
         <StyledDiv>
-            <PlanSelector/>
-            <OrderDbTab/>
-            <OrderCexTab/>
+            <Navbar/>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="dashboard" element={<DashBoard/>}/>
+            </Routes>
         </StyledDiv>
   )
 }
