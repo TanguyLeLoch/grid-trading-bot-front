@@ -134,3 +134,4 @@ sketch
 
 # environment variables (see .env.example)
 .env
+/dist
