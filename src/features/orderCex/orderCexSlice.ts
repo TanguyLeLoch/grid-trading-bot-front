@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { OrderModel } from '../../model/Order-model'
 import { ApiCaller } from '../../utils/ApiCaller'
 import { RootState } from '../../app/store'
+import { planSelected } from '../Plan/PlanSlice'
 
 interface OrderCexState {
   orders: OrderModel[]
@@ -15,8 +16,13 @@ const initialState: OrderCexState = {
 
 export const getActiveOrderCex = createAsyncThunk(
   'orderCex/get',
-  async (): Promise<OrderModel[]> => {
-    return await ApiCaller.getOrderFromCex()
+  async (arg, { getState }): Promise<OrderModel[]> => {
+    const state = getState() as RootState
+    const selectedPlan = planSelected(state)
+    if (selectedPlan !== null) {
+      return await ApiCaller.getOrderFromCex(selectedPlan)
+    }
+    return []
   }
 )
 export const orderCexSlice = createSlice({
