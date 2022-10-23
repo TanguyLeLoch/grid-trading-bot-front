@@ -25,35 +25,25 @@ const StyledPair = styled.div`
     width: 50px;
 `
 const StyledSide = styled.span`
-${(props: { side: Side }) => props.side === Side.BUY ? 'color: green' : 'color: red'}
-    
+    font-weight: bold;
+    ${(props: { side: Side }) => (props.side === Side.BUY ? 'color: green' : 'color: red')}
 `
 
 export function Order ({ order }: { order: OrderModel }): JSX.Element {
-  return <StyledOrder>
-        <PairElement pair={order.pair}></PairElement>
-        {order.price.value !== undefined && <StyledPrice>{order.price.value}</StyledPrice>}
-        <StyledSide side={order.side}>
-            {order.side}
-        </StyledSide>
-    </StyledOrder>
+    return (
+        <StyledOrder>
+            <PairElement pair={order.pair}></PairElement>
+            {order.price.value !== undefined && <StyledPrice> {order.price.value} </StyledPrice>}
+            <StyledSide side={order.side}> {order.side} </StyledSide>
+        </StyledOrder>
+    )
 }
 
 function PairElement ({ pair }: { pair: Pair }): JSX.Element {
-  return <StyledPair>
-        <span style={
-            {
-              color: 'green',
-              fontWeight: 'bold',
-              alignSelf: 'flex-start'
-            }
-        }> {pair.token1}</span>
-        <span style={
-            {
-              color: 'red',
-              fontSize: 'small',
-              alignSelf: 'flex-end'
-            }
-        }> {pair.token2}</span>
-    </StyledPair>
+    return (
+        <StyledPair>
+            <span style={{ color: 'green', fontWeight: 'bold', alignSelf: 'flex-start' }}>{pair.token1}</span>
+            <span style={{ color: 'red', fontSize: 'small', alignSelf: 'flex-end' }}>{pair.token2}</span>
+        </StyledPair>
+    )
 }

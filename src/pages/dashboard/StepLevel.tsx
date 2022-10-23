@@ -29,25 +29,24 @@ const StepLevelOrderCex = styled.div`
 `
 
 interface StepLevelProps {
-  stepLevel: number
-  orderDb: OrderModel | null
-  orderCex: OrderModel | null
-  position: number
+    stepLevel: number
+    orderDb: OrderModel | null
+    orderCex: OrderModel | null
+    position: number
 }
 
 export function StepLevel ({ stepLevel, position, orderDb, orderCex }: StepLevelProps): JSX.Element {
-  let color
-  if (orderDb !== null && orderCex !== null) {
-    color = 'rgba(0,255,0,0.1)'
-  } else if (orderDb !== null && orderCex === null) {
-    color = 'rgba(255,153,0,0.1)'
-  } else if (orderDb === null && orderCex === null) {
-    color = 'rgba(0,186,255,0.1)'
-  } else {
-    color = 'rgba(255,0,0,0.1)'
-  }
-  console.log('color', color)
-  return (
+    let color
+    if (orderDb !== null && orderCex !== null) {
+        color = 'rgba(99,253,99,0.05)'
+    } else if (orderDb !== null && orderCex === null) {
+        color = 'rgba(255,153,0,0.05)'
+    } else if (orderDb === null && orderCex === null) {
+        color = 'rgba(0,186,255,0.05)'
+    } else {
+        color = 'rgba(255,0,0,0.05)'
+    }
+    return (
         <>
             <StyledPriceContainer color={color}>
                 <StepLevelValue position={position}>{stepLevel}</StepLevelValue>
@@ -59,5 +58,5 @@ export function StepLevel ({ stepLevel, position, orderDb, orderCex }: StepLevel
                 {orderCex !== null && <Order order={orderCex}/>}
             </StepLevelOrderCex>
         </>
-  )
+    )
 }

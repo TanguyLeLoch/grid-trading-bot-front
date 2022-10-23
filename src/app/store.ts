@@ -7,10 +7,10 @@ import planReducer from '../features/Plan/PlanSlice'
 export type RootState = ReturnType<typeof store.getState>
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    orderDb: orderDbReducer,
-    orderCex: orderCexReducer,
-    plan: planReducer
-  }
+    reducer: {
+        counter: counterReducer,
+        orderDb: orderDbReducer,
+        orderCex: orderCexReducer,
+        plan: planReducer
+    }
 })
